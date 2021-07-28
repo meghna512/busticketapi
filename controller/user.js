@@ -5,10 +5,11 @@ const Users = require('../models/user');
 
 const createUser = async (req, res) => {
     const newUser = new Users();
-    newUser.name = req.body.name;
+    newUser.userName = req.body.userName;
     newUser.age = req.body.age;
     newUser.gender = req.body.gender;
     newUser.address = req.body.address;
+    newUser.userType = req.body.userType;
     newUser.uid = shortid.generate();
     try {
         newUser.password = bcrypt.hashSync(req.body.password, 10);

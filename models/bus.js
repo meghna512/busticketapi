@@ -11,20 +11,20 @@ const BusSchema = new Schema({
         type: String,
         required: true
     },
-    numberOfSeats: {
+    totalSeats: {
         type: Number,
-        required: true
+        required: true,
+        min: 0,
+        max: 40
     },
-    owner: {
-        type: mongoose.Types.ObjectId,
-        ref: "user"
+    availSeats: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 40,
+        default: 40
     }
 });
-BusSchema.pre("findOne", function (next) {
-    this.populate("owner");
-    next();
-});
-
 
 const bus = mongoose.model('bus', BusSchema);
 

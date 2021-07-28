@@ -10,6 +10,8 @@ const checkBus = async (req, res, next) => {
     } catch (err) {
         return res.status(500).json({ message: err.message });
     }
+
+    
     if (bus) {
         res.locals.bus = bus; 
     } else {
@@ -32,6 +34,7 @@ const checkTicket = async (req, res, next) => {
     } else {
         return res.status(404).json({ message: "Ticket not found" });
     }
+    // check for current user ->
     return next();
 }
 

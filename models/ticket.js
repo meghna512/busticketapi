@@ -9,8 +9,9 @@ const TicketSchema = new Schema({
     },
     status: {
         type: String,
-        required: true
+        default: "open"
     },
+    user: [{name: String, age: Number, gender: String}],
     owner: {
         type: mongoose.Types.ObjectId,
         ref: "user"
@@ -22,10 +23,9 @@ const TicketSchema = new Schema({
 });
 
 TicketSchema.pre("findOne", function (next) {
-    this.populate("bus");
+    this.populate("owner");
     next();
 });
-
 
 const ticket = mongoose.model('ticket', TicketSchema);
 
