@@ -1,6 +1,4 @@
 const Buses = require("../models/bus");
-const Tickets = require("../models/ticket");
-
 
 const checkBus = async (req, res, next) => { 
     const busUid = req.params.busUid;
@@ -10,7 +8,6 @@ const checkBus = async (req, res, next) => {
     } catch (err) {
         return res.status(500).json({ message: err.message });
     }
-
     
     if (bus) {
         res.locals.bus = bus; 
@@ -20,25 +17,6 @@ const checkBus = async (req, res, next) => {
     return next();
 }
 
-
-const checkTicket = async (req, res, next) => { 
-    const ticketUid = req.params.ticketUid;
-    let ticket;
-    try {
-        ticket = await Tickets.findOne({ uid: ticketUid });
-    } catch (err) {
-        return res.status(500).json({ message: err.message });
-    }
-    if (ticket) {
-        res.locals.ticket = ticket; 
-    } else {
-        return res.status(404).json({ message: "Ticket not found" });
-    }
-    // check for current user ->
-    return next();
-}
-
 module.exports = {
-    checkBus,
-    checkTicket
+    checkBus
 }

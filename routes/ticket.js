@@ -1,22 +1,19 @@
 const router = require('express').Router();
-const {checkBus,checkTicket } = require('../middleware/bus');
+const {checkBus } = require('../middleware/bus');
+const {checkTicket } = require('../middleware/ticket');
 const {setUser } = require('../middleware/user');
 const {createTicket, updateTicket,getTicketStatus,resetAllTickets,getTicketUserDetails} = require('../controller/ticket');
-const {createBus} = require('../controller/bus');
-
 
 router.use(setUser);
-
-//generate bus
-router.post('/bus', createBus);
 
 //generate ticket
 router.post('/:busUid', checkBus, createTicket);
 
+//Details of person owning the ticket
 router.get('/:busUid/ticket/:ticketUid', checkBus, checkTicket, getTicketUserDetails);
 
 //view ticket status
-router.get('/',  getTicketStatus);
+router.get('/', getTicketStatus);
 
 //reset all tickets
 router.get('/:busUid/reset', checkBus, resetAllTickets);

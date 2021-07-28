@@ -21,8 +21,6 @@ const resetAllTickets = async (req, res) => {
     return res.status(201).json({ message: "Status updated to open" });
 }
 
-
-
 const createTicket = async (req, res) => {
     if (req.body.user) {
         if (req.body.user.length > res.locals.bus.availSeats) {

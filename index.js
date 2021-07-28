@@ -18,5 +18,5 @@ app.use(bodyParser.json());
 app.use('/', router);
 
 app.listen(process.env.PORT, () => {
-    console.log(`server is up at port `);
+    console.log(`server is up at port ${process.env.PORT}`);
 });
