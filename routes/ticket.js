@@ -18,7 +18,7 @@ router.get('/', getTicketStatus);
 //reset all tickets
 router.get('/:busUid/reset', checkBus, resetAllTickets);
 
-//update ticket details
+//update ticket details(admin only)
 router.patch('/:busUid/ticket/:ticketUid', checkBus, checkTicket, updateTicket);
 
 

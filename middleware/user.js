@@ -9,7 +9,7 @@ const validateUser = (req, res, next) => {
 }
 
 const setUser = async (req, res, next) =>{
-    if(req.headers.authorization){   //check if user is loggedin and also return user in req.user for further controllers to set owner
+    if(req.headers.authorization){   
         const decoded = jwt.verify(req.headers.authorization, process.env.SECRET);
         try{
            req.user =  await Users.findOne({ uid : decoded.uid});

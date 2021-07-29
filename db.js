@@ -1,4 +1,3 @@
-//require('dotenv').config();
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
@@ -9,7 +8,7 @@ const connectDB = async () => {
             useFindAndModify: false,
             useCreateIndex: true
         });
-        console.log("db connected");
+        console.log("Database Connected");
 
     } catch (err) {
         console.log(err);
