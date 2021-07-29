@@ -10,4 +10,7 @@ There is an additional api for admin to reset the status of all tickets to open.
 3. Create a ```.env``` file, similar to ```.env.example```
 4. Run ```node index.js``` command.
 
+The api is deployed at [Heroku Link](https://busticketapi.herokuapp.com)
+
 A link to POSTMAN Collections is given here: [Postman Links](https://www.getpostman.com/collections/68b847dd7828e41d28ef)
+
